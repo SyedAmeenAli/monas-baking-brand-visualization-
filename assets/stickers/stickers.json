@@ -1,0 +1,92 @@
+{
+ "sheet": [
+  210.0,
+  148.0
+ ],
+ "stickers": [
+  {
+   "name": "Round logo",
+   "x": 8,
+   "y": 8,
+   "w": 50,
+   "h": 50
+  },
+  {
+   "name": "Thank you",
+   "x": 64,
+   "y": 8,
+   "w": 44,
+   "h": 44
+  },
+  {
+   "name": "Cupcake",
+   "x": 114,
+   "y": 8,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "name": "Cherries",
+   "x": 160,
+   "y": 8,
+   "w": 34,
+   "h": 34
+  },
+  {
+   "name": "Fresh baked daily",
+   "x": 8,
+   "y": 64,
+   "w": 62,
+   "h": 36
+  },
+  {
+   "name": "Handmade",
+   "x": 76,
+   "y": 64,
+   "w": 52,
+   "h": 36
+  },
+  {
+   "name": "Sealed with love",
+   "x": 134,
+   "y": 64,
+   "w": 36,
+   "h": 36
+  },
+  {
+   "name": "Strawberry",
+   "x": 174,
+   "y": 64,
+   "w": 28,
+   "h": 28
+  },
+  {
+   "name": "Made with love strip",
+   "x": 8,
+   "y": 108,
+   "w": 50,
+   "h": 24
+  },
+  {
+   "name": "Heart",
+   "x": 64,
+   "y": 108,
+   "w": 40,
+   "h": 28
+  },
+  {
+   "name": "Open daily",
+   "x": 110,
+   "y": 108,
+   "w": 36,
+   "h": 24
+  },
+  {
+   "name": "Cake",
+   "x": 152,
+   "y": 108,
+   "w": 30,
+   "h": 30
+  }
+ ]
+}

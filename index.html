@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mona's Baking - packaging system</title>
+<meta name="description" content="Mona's Baking packaging: the 4-inch handled cake box and brownie box folded in 3D from their dielines, with flat dimensions in mm, cm and inches, plus stickers, tags, cards and tissue.">
+<link rel="icon" href="favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=3">
+<link rel="apple-touch-icon" href="assets/favicon-180.png?v=3">
+<meta name="theme-color" content="#FFD9E4">
+<link rel="stylesheet" href="styles.css?v=20261110c">
+</head>
+<body>
+<div class="rail">
+  <img class="mark" src="assets/logo.png" alt="Mona's Baking" height="38">
+  <nav class="jump" aria-label="Products">
+    <a href="#box4">Cake box</a><a href="#tuck">Brownie</a><a href="#cupbox">Cupcake</a><a href="#bento">Bento</a><a href="#cup">Cup</a><a href="#bag">Bag</a><a href="#stickers">Stickers</a><a href="#bench">Extras</a><a href="#brand">Look</a>
+  </nav>
+  <div class="units" role="group" aria-label="Units">
+    <button data-u="mm" aria-pressed="true">mm</button><button data-u="cm" aria-pressed="false">cm</button><button data-u="in" aria-pressed="false">in</button>
+  </div>
+</div>
+
+<main>
+<section class="hero" id="top" aria-label="Mona's Baking shopfront">
+  <div class="shop" id="shop">
+    <div class="ly" data-d="3"><img src="assets/items/hero_back.svg" alt="" width="320" height="170"></div>
+    <div class="ly" data-d="9"><img src="assets/items/hero_flowers.svg" alt="" width="320" height="170"></div>
+    <div class="ly" data-d="13"><img class="sway" src="assets/items/hero_awning.svg" alt="" width="320" height="170"></div>
+    <div class="ly" data-d="17"><img class="swing l" src="assets/items/hero_lanternL.svg" alt="" width="320" height="170"></div>
+    <div class="ly" data-d="17"><img class="swing r" src="assets/items/hero_lanternR.svg" alt="" width="320" height="170"></div>
+    <div class="ly" data-d="7"><img class="signimg" src="assets/items/hero_sign.svg" alt="Mona's Baking, homemade bakes, made with love" width="320" height="170"></div>
+    <div class="ly" data-d="22"><img src="assets/items/hero_floor.svg" alt="" width="320" height="170"></div>
+  </div>
+  <div class="floaters" aria-hidden="true">
+    <img class="fl" data-d="34" style="--x:5%;--y:22%;--r:-9deg;--w:clamp(70px,9vw,150px)" src="assets/stickers/s2.svg" alt="" draggable="false">
+    <img class="fl" data-d="48" style="--x:88%;--y:18%;--r:8deg;--w:clamp(80px,10.5vw,170px)" src="assets/stickers/s0.svg" alt="" draggable="false">
+    <img class="fl" data-d="28" style="--x:80%;--y:62%;--r:-6deg;--w:clamp(64px,8vw,130px)" src="assets/stickers/s1.svg" alt="" draggable="false">
+    <img class="fl" data-d="40" style="--x:51%;--y:79%;--r:6deg;--w:clamp(60px,7vw,118px)" src="assets/stickers/s7.svg" alt="" draggable="false">
+    <img class="fl" data-d="30" style="--x:93%;--y:44%;--r:12deg;--w:clamp(54px,6vw,100px)" src="assets/stickers/s3.svg" alt="" draggable="false">
+  </div>
+  <div class="cap">
+    <p class="kicker hand">Mona's Baking, packaging system</p>
+    <h1><span>Every box</span> <span>is a</span> <span class="ul">little shop.</span></h1>
+    <p>Boxes that fold up from flat templates, stickers to seal them, a logo that scales, and every size written on it. Pick a unit at the top and the whole page follows.</p>
+    <div class="cta"><a class="btn" href="#box4">Open the boxes</a><a class="btn alt" href="#stickers">Peel a sticker</a></div>
+  </div>
+  <div class="hint hand">move your mouse. drag a sticker. click for sprinkles.</div>
+</section>
+
+<section class="stage" id="box4" data-product="box4" data-front="tray">
+  <div class="wrap">
+    <header>
+      <h2>The handled cake box</h2>
+      <p>Carry-handle box, one design in five sizes. Pick a cake size, drag to turn it, slide to fold it flat, or open the lids.</p>
+      <div class="chips sizes" role="group" aria-label="Cake size"><button class="chip" data-cake="box4" aria-pressed="true">4 in</button><button class="chip" data-cake="cake6" aria-pressed="false">6 in</button><button class="chip" data-cake="cake8" aria-pressed="false">8 in</button><button class="chip" data-cake="cake10" aria-pressed="false">10 in</button><button class="chip" data-cake="cake12" aria-pressed="false">12 in</button></div>
+    </header>
+    <div class="grid3d">
+      <div class="viewer"><div class="loadmsg">warming the oven...</div></div>
+      <aside class="specs">
+        <dl>
+          <dt>Inside width</dt><dd><span data-mm="127" data-sp="w">127</span></dd>
+          <dt>Inside depth</dt><dd><span data-mm="127" data-sp="w">127</span></dd>
+          <dt>Inside height</dt><dd><span data-mm="152.4" data-sp="h">152.4</span></dd>
+          <dt>Handle above lid</dt><dd><span data-mm="56" data-sp="hp">56</span></dd>
+          <dt>Finger hole</dt><dd><span data-mm="44" data-sp="hw">44</span> x <span data-mm="12" data-sp="hh">12</span></dd>
+          <dt>Corner glue flap</dt><dd><span data-mm="20" data-sp="g">20</span></dd>
+          <dt>Flat sheet</dt><dd><span data-mm="431.8" data-sp="sw">431.8</span> x <span data-mm="669.8" data-sp="sh">669.8</span></dd>
+        </dl>
+        <p class="note" id="cakenote">for a 4-inch cake up to about 4.5 in tall</p>
+        <div class="status"><b>Draft.</b> This box folds correctly in the model below, but no manufacturer has reviewed it yet. Board thickness (0.5 mm) is an assumption.</div>
+        <div class="dl"><a data-f="dieline_master.svg" href="assets/box4/box4_dieline_master.svg" download>Dieline SVG</a><a data-f="dieline.pdf" href="assets/box4/box4_dieline.pdf" download>Dieline PDF</a><a data-f="dieline.dxf" href="assets/box4/box4_dieline.dxf" download>Dieline DXF</a><a data-f="print_artwork.pdf" href="assets/box4/box4_print_artwork.pdf" download>Print artwork PDF</a></div>
+      </aside>
+    </div>
+    <div class="flat">
+      <div class="bar"><h3>Flat template, to scale</h3>
+        <label class="layer" style="--sw:#EC008C"><input type="checkbox" data-layer="CUT" checked>Cut</label>
+        <label class="layer" style="--sw:#00AEEF"><input type="checkbox" data-layer="CREASE" checked>Crease</label>
+        <label class="layer" style="--sw:#F5C400"><input type="checkbox" data-layer="GLUE" checked>Glue</label>
+        <label class="layer"><input type="checkbox" data-layer="art" checked>Artwork</label>
+        <label class="layer"><input type="checkbox" data-layer="dims" checked>Sizes</label>
+      </div>
+      <div class="sheet" data-dieline="assets/box4/dieline_dim.svg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="stage" id="tuck" data-product="tuck" data-front="tube">
+  <div class="wrap">
+    <header>
+      <h2>The brownie box</h2>
+      <p>A straight-tuck carton for four brownies. One flat sheet, one glued seam, tucks top and bottom.</p>
+    </header>
+    <div class="grid3d">
+      <div class="viewer"><div class="loadmsg">warming the oven...</div></div>
+      <aside class="specs">
+        <dl>
+          <dt>Inside width</dt><dd><span data-mm="139.7">139.7</span></dd>
+          <dt>Inside depth</dt><dd><span data-mm="139.7">139.7</span></dd>
+          <dt>Inside height</dt><dd><span data-mm="63.5">63.5</span></dd>
+          <dt>Glue flap</dt><dd><span data-mm="15">15</span></dd>
+          <dt>Flat sheet</dt><dd><span data-mm="573.8">573.8</span> x <span data-mm="373.9">373.9</span></dd>
+        </dl>
+        <p class="note">size from the collection sheet: 5.5 x 5.5 x 2.5 in</p>
+        <div class="status"><b>Draft.</b> Standard straight-tuck construction, drawn here from scratch. Needs a manufacturer check before printing.</div>
+        <div class="dl"><a href="assets/tuck/tuck_dieline_master.svg" download>Dieline SVG</a><a href="assets/tuck/tuck_dieline.pdf" download>Dieline PDF</a><a href="assets/tuck/tuck_dieline.dxf" download>Dieline DXF</a><a href="assets/tuck/tuck_print_artwork.pdf" download>Print artwork PDF</a></div>
+      </aside>
+    </div>
+    <div class="flat">
+      <div class="bar"><h3>Flat template, to scale</h3>
+        <label class="layer" style="--sw:#EC008C"><input type="checkbox" data-layer="CUT" checked>Cut</label>
+        <label class="layer" style="--sw:#00AEEF"><input type="checkbox" data-layer="CREASE" checked>Crease</label>
+        <label class="layer" style="--sw:#F5C400"><input type="checkbox" data-layer="GLUE" checked>Glue</label>
+        <label class="layer"><input type="checkbox" data-layer="art" checked>Artwork</label>
+        <label class="layer"><input type="checkbox" data-layer="dims" checked>Sizes</label>
+      </div>
+      <div class="sheet" data-dieline="assets/tuck/dieline_dim.svg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="stage" id="cupbox" data-product="cupbox" data-front="tube">
+  <div class="wrap">
+    <header>
+      <h2>The cupcake window box</h2>
+      <p>A straight-tuck carton for four cupcakes, with a window in the front so the frosting shows. Fold it, then open the lid.</p>
+    </header>
+    <div class="grid3d">
+      <div class="viewer"><div class="loadmsg">warming the oven...</div></div>
+      <aside class="specs">
+        <dl><dt>Inside width</dt><dd><span data-mm="165">165</span></dd><dt>Inside depth</dt><dd><span data-mm="165">165</span></dd><dt>Inside height</dt><dd><span data-mm="100">100</span></dd><dt>Window</dt><dd><span data-mm="117">117</span> x <span data-mm="48">48</span></dd><dt>Glue flap</dt><dd><span data-mm="15">15</span></dd><dt>Flat sheet</dt><dd><span data-mm="675">675</span> x <span data-mm="461">461</span></dd></dl>
+        <p class="note">design size for four standard cupcakes, about 70 mm wide each</p>
+        <div class="status"><b>Draft.</b> Drawn from scratch on a standard tuck-end layout. The window needs a clear film patch, which is not drawn. No maker has reviewed it, and no cupcake insert is designed.</div>
+        <div class="dl"><a href="assets/cupbox/cupbox_dieline_master.svg" download>Dieline SVG</a><a href="assets/cupbox/cupbox_dieline.pdf" download>Dieline PDF</a><a href="assets/cupbox/cupbox_dieline.dxf" download>Dieline DXF</a><a href="assets/cupbox/cupbox_print_artwork.pdf" download>Print artwork PDF</a></div>
+      </aside>
+    </div>
+    <div class="flat">
+      <div class="bar"><h3>Flat template, to scale</h3>
+        <label class="layer" style="--sw:#EC008C"><input type="checkbox" data-layer="CUT" checked>Cut</label>
+        <label class="layer" style="--sw:#00AEEF"><input type="checkbox" data-layer="CREASE" checked>Crease</label>
+        <label class="layer" style="--sw:#F5C400"><input type="checkbox" data-layer="GLUE" checked>Glue</label>
+        <label class="layer"><input type="checkbox" data-layer="art" checked>Artwork</label>
+        <label class="layer"><input type="checkbox" data-layer="dims" checked>Sizes</label>
+      </div>
+      <div class="sheet" data-dieline="assets/cupbox/dieline_dim.svg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="stage" id="bento" data-product="bento" data-front="tube">
+  <div class="wrap">
+    <header>
+      <h2>The bento carton</h2>
+      <p>A shallow tuck-end carton with a window in the lid, for a packed lunch or a set of small bakes.</p>
+    </header>
+    <div class="grid3d">
+      <div class="viewer"><div class="loadmsg">warming the oven...</div></div>
+      <aside class="specs">
+        <dl><dt>Inside width</dt><dd><span data-mm="230">230</span></dd><dt>Inside depth</dt><dd><span data-mm="160">160</span></dd><dt>Inside height</dt><dd><span data-mm="60">60</span></dd><dt>Lid window</dt><dd><span data-mm="157">157</span> x <span data-mm="82.5">82.5</span></dd><dt>Glue flap</dt><dd><span data-mm="15">15</span></dd><dt>Flat sheet</dt><dd><span data-mm="795">795</span> x <span data-mm="411">411</span></dd></dl>
+        <p class="note">design size; no tray dividers drawn yet</p>
+        <div class="status"><b>Draft.</b> The same tuck-end build as the cupcake box. Window film, grease-proof liner and dividers are not designed, and no maker has reviewed it.</div>
+        <div class="dl"><a href="assets/bento/bento_dieline_master.svg" download>Dieline SVG</a><a href="assets/bento/bento_dieline.pdf" download>Dieline PDF</a><a href="assets/bento/bento_dieline.dxf" download>Dieline DXF</a><a href="assets/bento/bento_print_artwork.pdf" download>Print artwork PDF</a></div>
+      </aside>
+    </div>
+    <div class="flat">
+      <div class="bar"><h3>Flat template, to scale</h3>
+        <label class="layer" style="--sw:#EC008C"><input type="checkbox" data-layer="CUT" checked>Cut</label>
+        <label class="layer" style="--sw:#00AEEF"><input type="checkbox" data-layer="CREASE" checked>Crease</label>
+        <label class="layer" style="--sw:#F5C400"><input type="checkbox" data-layer="GLUE" checked>Glue</label>
+        <label class="layer"><input type="checkbox" data-layer="art" checked>Artwork</label>
+        <label class="layer"><input type="checkbox" data-layer="dims" checked>Sizes</label>
+      </div>
+      <div class="sheet" data-dieline="assets/bento/dieline_dim.svg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="stage" id="cup" data-product="cup" data-front="tube">
+  <div class="wrap">
+    <header>
+      <h2>The dessert cup</h2>
+      <p>A paper cup sleeve rolled from one flat fan-shaped blank, with a base disc and a clear dome lid. Slide to roll it up, or take the lid off.</p>
+    </header>
+    <div class="grid3d">
+      <div class="viewer"><div class="loadmsg">warming the oven...</div></div>
+      <aside class="specs">
+        <dl><dt>Top diameter</dt><dd><span data-mm="90">90</span></dd><dt>Base diameter</dt><dd><span data-mm="60">60</span></dd><dt>Height</dt><dd><span data-mm="75">75</span></dd><dt>Slant height</dt><dd><span data-mm="76.49">76.49</span></dd><dt>Blank radii</dt><dd><span data-mm="229.5">229.5</span> and <span data-mm="153">153</span></dd><dt>Blank angle</dt><dd>70.6 deg</dd><dt>Volume</dt><dd>about 335 ml</dd></dl>
+        <p class="note">the fan shape comes straight from the cone maths</p>
+        <div class="status"><b>Draft.</b> Blank geometry is exact for the cone. Wall paper, a PE lining for food contact, the base fold and the dome (a stock clear part, shown only as a picture) are not specified, and no maker has reviewed it.</div>
+        <div class="dl"><a href="assets/cup/cup_dieline_master.svg" download>Dieline SVG</a><a href="assets/cup/cup_dieline.pdf" download>Dieline PDF</a><a href="assets/cup/cup_dieline.dxf" download>Dieline DXF</a><a href="assets/cup/cup_print_artwork.pdf" download>Print artwork PDF</a></div>
+      </aside>
+    </div>
+    <div class="flat">
+      <div class="bar"><h3>Flat template, to scale</h3>
+        <label class="layer" style="--sw:#EC008C"><input type="checkbox" data-layer="CUT" checked>Cut</label>
+        <label class="layer" style="--sw:#00AEEF"><input type="checkbox" data-layer="CREASE" checked>Crease</label>
+        <label class="layer" style="--sw:#F5C400"><input type="checkbox" data-layer="GLUE" checked>Glue</label>
+        <label class="layer"><input type="checkbox" data-layer="art" checked>Artwork</label>
+        <label class="layer"><input type="checkbox" data-layer="dims" checked>Sizes</label>
+      </div>
+      <div class="sheet" data-dieline="assets/cup/dieline_dim.svg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="stage" id="bag" data-product="bag" data-front="tube">
+  <div class="wrap">
+    <header>
+      <h2>The shopping bag</h2>
+      <p>A gusseted bag with a flat bottom and twisted-paper handles, for boxes and treats. Drag to turn it, or slide to unfold the sheet it is made from.</p>
+    </header>
+    <div class="grid3d">
+      <div class="viewer"><div class="loadmsg">warming the oven...</div></div>
+      <aside class="specs">
+        <dl>
+          <dt>Width</dt><dd><span data-mm="180">180</span></dd>
+          <dt>Gusset (side)</dt><dd><span data-mm="90">90</span></dd>
+          <dt>Height</dt><dd><span data-mm="240">240</span></dd>
+          <dt>Handle holes</dt><dd><span data-mm="60">60</span> apart, <span data-mm="14">14</span> down</dd>
+          <dt>Bottom flaps</dt><dd><span data-mm="45">45</span> and <span data-mm="58">58</span></dd>
+          <dt>Seam glue flap</dt><dd><span data-mm="20">20</span></dd>
+          <dt>Flat sheet</dt><dd><span data-mm="560">560</span> x <span data-mm="298">298</span></dd>
+        </dl>
+        <p class="note">a design size, sized for a boxed brownie set or a few cupcakes</p>
+        <div class="status"><b>Draft.</b> The sides fold open flat in the model (a real gusset folds in). Top hem, handle patches and paper weight are not set yet, and no maker has reviewed it.</div>
+        <div class="dl"><a href="assets/bag/bag_dieline_master.svg" download>Dieline SVG</a><a href="assets/bag/bag_dieline.pdf" download>Dieline PDF</a><a href="assets/bag/bag_dieline.dxf" download>Dieline DXF</a><a href="assets/bag/bag_print_artwork.pdf" download>Print artwork PDF</a></div>
+      </aside>
+    </div>
+    <div class="flat">
+      <div class="bar"><h3>Flat template, to scale</h3>
+        <label class="layer" style="--sw:#EC008C"><input type="checkbox" data-layer="CUT" checked>Cut</label>
+        <label class="layer" style="--sw:#00AEEF"><input type="checkbox" data-layer="CREASE" checked>Crease</label>
+        <label class="layer" style="--sw:#F5C400"><input type="checkbox" data-layer="GLUE" checked>Glue</label>
+        <label class="layer"><input type="checkbox" data-layer="art" checked>Artwork</label>
+        <label class="layer"><input type="checkbox" data-layer="dims" checked>Sizes</label>
+      </div>
+      <div class="sheet" data-dieline="assets/bag/dieline_dim.svg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="stickers" id="stickers">
+  <div class="wrap">
+    <header class="sthead">
+      <h2>The sticker sheet</h2>
+      <p>Twelve kiss-cut stickers on one A5 sheet: logo seal, thank-you, cupcake, cherries, strawberry and more. Hover to lift one, click to peel it and read its size.</p>
+    </header>
+    <div class="stgrid">
+      <div class="stsheet"><div class="paper" id="stickersheet" data-sheet="assets/stickers/sheet.svg"></div></div>
+      <aside class="specs">
+        <div class="peelinfo" id="peelinfo"><span class="hand" id="pname">Pick a sticker</span><b id="psize">&nbsp;</b></div>
+        <dl>
+          <dt>Sheet</dt><dd><span data-mm="210">210</span> x <span data-mm="148">148</span></dd>
+          <dt>Stickers on sheet</dt><dd>12</dd>
+          <dt>Cut type</dt><dd>kiss-cut, backing paper stays whole</dd>
+          <dt>Gap between stickers</dt><dd><span data-mm="6">6</span></dd>
+        </dl>
+        <div class="status"><b>Draft.</b> Sizes and kiss-cut paths are design values. A sticker printer will want their own template and a 1.5 mm bleed check. White border around each sticker is added in the cut path.</div>
+        <div class="dl"><a href="assets/stickers/sticker_sheet_art.pdf" download>Artwork PDF</a><a href="assets/stickers/sticker_sheet_cutline.pdf" download>Cut-line PDF</a><a href="assets/stickers/stickers.dxf" download>Cut paths DXF</a></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="bench" id="bench">
+  <div class="wrap">
+    <h2>Everything that goes in the bag</h2>
+    <p style="margin-top:14px">Stickers, seals, tags, cards, labels, ribbon and tissue, all drawn at the same scale so you can see how big each one really is. Dashed pink line is the cut.</p>
+    <div class="bench-row" id="items"></div>
+  </div>
+</section>
+
+<section class="brand" id="brand">
+  <div class="wrap">
+    <h2>The look</h2>
+    <div class="brand-grid">
+      <div class="logo-col">
+        <div class="logo-plate" id="logoplate"><div class="lp-box" id="lpbox"><img id="lpimg" src="assets/logo.png" alt="Mona's Baking logo" draggable="false"><i class="cs" aria-hidden="true"></i></div></div>
+        <div class="logo-ctl">
+          <label>Logo width <input type="range" id="lpsize" min="12" max="200" value="80" step="1"> <b id="lpread">80 mm</b></label>
+          <div class="chips"><button class="chip" data-lw="25">Min 25 mm</button><button class="chip" data-lw="50">Sticker 50</button><button class="chip" data-lw="80" aria-pressed="true">Box lid 80</button><button class="chip" data-lw="150">Bag 150</button></div>
+          <label class="layer"><input type="checkbox" id="lpclear" checked>Clear space</label>
+          <p class="lpnote" id="lpnote"></p>
+        </div>
+      </div>
+      <div>
+        <div class="swatches">
+          <div class="sw"><i style="background:#FFF6F6"></i><b>Cream</b><span>#FFF6F6</span></div>
+          <div class="sw"><i style="background:#FFD9E4"></i><b>Baby pink</b><span>#FFD9E4</span></div>
+          <div class="sw"><i style="background:#F7B6C7"></i><b>Blush</b><span>#F7B6C7</span></div>
+          <div class="sw"><i style="background:#8B4A3A"></i><b>Chocolate</b><span>#8B4A3A</span></div>
+        </div>
+        <div class="spec-type"><span class="a">Young Serif</span><span class="b">Caveat, for notes and signs</span></div>
+        <ul class="credits">
+          <li>All illustrations are drawn for this project (ink lines, flat pastel fills printed slightly off-register). No stock art is used on any box or item.</li>
+          <li>Fonts: Young Serif, Literata and Caveat, all SIL Open Font License, from Google Fonts.</li>
+          <li>The logo is the approved Mona's Baking logo, unchanged apart from a transparent background.</li>
+          <li>Sizes on stickers, tags, cards and tissue are design sizes, still to be confirmed with the printer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="gingham-edge" aria-hidden="true"></div>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="assets/logo.png" alt="Mona's Baking" height="64">
+      <p class="hand">homemade bakes, made with love</p>
+    </div>
+    <nav aria-label="Products">
+      <h4>Boxes</h4>
+      <a href="#box4">Cake box</a><a href="#tuck">Brownie box</a><a href="#cupbox">Cupcake box</a><a href="#bento">Bento carton</a><a href="#cup">Dessert cup</a><a href="#bag">Paper bag</a>
+    </nav>
+    <nav aria-label="Extras">
+      <h4>Extras</h4>
+      <a href="#stickers">Sticker sheet</a><a href="#bench">Tags, cards, tissue</a><a href="#brand">Logo and colours</a>
+    </nav>
+    <div class="foot-note">
+      <h4>Status</h4>
+      <p>Every structure here is a draft. None has been reviewed by a manufacturer, and sizes are design values to confirm with the printer.</p>
+      <a class="top" href="#top">Back to the shop &uarr;</a>
+    </div>
+  </div>
+  <p class="foot-base">Mona's Baking packaging system &middot; drawn for this project &middot; fonts: Young Serif, Literata, Caveat (SIL OFL)</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/exporters/GLTFExporter.js"></script>
+<script src="app.js?v=20261110c"></script>
+<script src="fx.js?v=20261110c"></script>
+</body>
+</html>

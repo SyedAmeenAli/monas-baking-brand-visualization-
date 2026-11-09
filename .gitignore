@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+src/t2.*
+src/test.*
+src/test_front.py
+_tmp/
+node_modules/
+.vercel
