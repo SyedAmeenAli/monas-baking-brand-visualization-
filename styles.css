@@ -222,3 +222,52 @@ html{scroll-behavior:smooth;scroll-padding-top:70px}
 /* nav: never hard-clip a pill; soft fade at the scroll edges, tighter type on narrow screens */
 .jump{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);padding-inline:14px;scroll-behavior:smooth}
 @media(max-width:1100px){.jump{justify-content:flex-start;margin-inline:8px}.jump a{font-size:12px;padding:5px 9px}}
+
+/* ---------- phones */
+.chip,.dl a,.units button,.btn,.tab{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+@media(max-width:900px){
+  .viewer{touch-action:pan-y;aspect-ratio:1/1;min-height:300px;max-height:78vh}
+  .grid3d>.vc{position:static;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:2px 0 4px;pointer-events:auto}
+  .grid3d>.vc .chips,.grid3d>.vc .fold{grid-column:1/-1}
+  .grid3d>.vc .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px 1px 6px;-webkit-overflow-scrolling:touch}
+  .grid3d>.vc .chips::-webkit-scrollbar{display:none}
+  .grid3d>.vc .chip{flex:none;min-height:40px;padding:8px 15px;font-size:14px}
+  .grid3d>.vc>.chip{justify-self:stretch;text-align:center}
+  .grid3d>.vc .fold{width:100%;justify-content:space-between;min-height:44px}.grid3d>.vc .fold input{flex:1;width:auto}
+  .viewer .loadmsg{font-size:1.4rem}
+  .sheet{padding:8px;-webkit-overflow-scrolling:touch}
+  .flat .bar{gap:8px 14px}.layer{min-height:36px;font-size:15px}.layer input{width:24px;height:24px}
+  .dl a{padding:11px 18px;font-size:15px}
+  .specs dt,.specs dd{padding:11px 0}
+  .chips.sizes .chip{min-height:40px;padding:8px 16px}
+  .sthead,.stage>.wrap>header{gap:8px}
+  .paper{padding:8px}
+  .stk:hover{transform:none;filter:none}
+  .logo-plate{padding:22px 14px}
+  .logo-ctl input[type=range]{min-height:34px}
+  .logo-ctl .chip{min-height:38px}
+  .foot-grid{gap:22px}
+  .foot nav a{padding:5px 0;font-size:1.02rem}
+}
+@media(max-width:700px){
+  .rail{padding:8px 10px 14px;gap:6px}
+  .rail .mark{height:26px}
+  .units{padding:2px}.units button{padding:6px 8px;font-size:12px}
+  .jump{margin-inline:2px}
+  h2{font-size:clamp(2rem,10vw,2.8rem)}
+  body{font-size:16px}
+  .wrap{padding-inline:16px}
+  .stage{padding-top:48px}
+  .bench-row{gap:20px 14px}
+  .hero .cap{margin:-14px 14px 0;padding:16px 18px 18px}
+}
+
+.sheet{overflow:hidden}
+.pz{position:relative;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;border-radius:10px}
+.pz.zoomed{cursor:grab}.pz.zoomed:active{cursor:grabbing}
+.pzin{transform-origin:0 0}
+.zoom{display:flex;align-items:center;gap:6px;flex-basis:100%}
+.zoom .chip{min-width:40px;min-height:36px;padding:4px 14px;font-size:15px}
+.zl{font:600 13px var(--f-display);min-width:3.2em;text-align:center;font-variant-numeric:tabular-nums}
+.zh{font:500 1.05rem var(--f-hand);color:var(--cocoa);margin-left:6px}
+@media(max-width:900px){.sheet{max-height:none}.zoom .chip{min-height:42px}.zh{display:none}}

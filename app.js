@@ -32,12 +32,70 @@ const BUILD = '20261110b';
   window.MONA = { fmt: (mm) => fmt(mm) + suffix(), unit: () => unit, apply: applyUnits };
 
   // ------------------------------------------------------------ dielines
-  document.querySelectorAll('[data-dieline]').forEach(async (box) => {
+
+  // ------------------------------------------------------------ pan / zoom for flat templates (pinch, ctrl+wheel / trackpad pinch, drag, double-tap, buttons)
+  function panZoom(host, svg) {
+    const wrap = el('div', 'pz'), inner = el('div', 'pzin');
+    inner.appendChild(svg); wrap.appendChild(inner); host.replaceChildren(wrap);
+    let s = 1, tx = 0, ty = 0; const MAX = 8, P = new Map();
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const apply = () => {
+      const w = wrap.clientWidth, h = inner.offsetHeight;
+      tx = clamp(tx, w - w * s, 0); ty = clamp(ty, h - h * s, 0);
+      inner.style.transform = `translate(${tx}px,${ty}px) scale(${s})`;
+      wrap.style.touchAction = s > 1.001 ? 'none' : 'pan-y'; wrap.classList.toggle('zoomed', s > 1.001);
+      if (label) label.textContent = Math.round(s * 100) + '%';
+    };
+    const fitH = () => { wrap.style.height = inner.offsetHeight + 'px'; apply(); };
+    const zoomAt = (cx, cy, ns) => { ns = clamp(ns, 1, MAX); const k = ns / s; tx = cx - (cx - tx) * k; ty = cy - (cy - ty) * k; s = ns; apply(); };
+    const rel = (e) => { const r = wrap.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+    let pd = 0, pcx = 0, pcy = 0, lastTap = 0, moved = 0;
+    wrap.addEventListener('pointerdown', (e) => {
+      P.set(e.pointerId, [e.clientX, e.clientY]); wrap.setPointerCapture(e.pointerId); moved = 0;
+      if (P.size === 2) { const [a, b] = [...P.values()]; pd = Math.hypot(a[0] - b[0], a[1] - b[1]); pcx = (a[0] + b[0]) / 2; pcy = (a[1] + b[1]) / 2; }
+    });
+    wrap.addEventListener('pointermove', (e) => {
+      if (!P.has(e.pointerId)) return;
+      const prev = P.get(e.pointerId); P.set(e.pointerId, [e.clientX, e.clientY]);
+      if (P.size === 2) {
+        const [a, b] = [...P.values()], d = Math.hypot(a[0] - b[0], a[1] - b[1]), cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2, r = wrap.getBoundingClientRect();
+        tx += cx - pcx; ty += cy - pcy; zoomAt(cx - r.left, cy - r.top, s * (d / (pd || d))); pd = d; pcx = cx; pcy = cy; moved = 99;
+      } else if (P.size === 1 && s > 1.001) {
+        tx += e.clientX - prev[0]; ty += e.clientY - prev[1]; moved += Math.abs(e.clientX - prev[0]) + Math.abs(e.clientY - prev[1]); apply();
+      }
+    });
+    const up = (e) => {
+      const was = P.size; P.delete(e.pointerId);
+      if (was === 1 && moved < 8 && e.pointerType === 'touch') { // double-tap to zoom
+        const now = performance.now(); if (now - lastTap < 320) { const [x, y] = rel(e); zoomAt(x, y, s > 1.01 ? 1 : 2.6); lastTap = 0; } else lastTap = now;
+      }
+      if (P.size === 1) { const [only] = [...P.values()]; pd = 0; void only; }
+    };
+    wrap.addEventListener('pointerup', up); wrap.addEventListener('pointercancel', up);
+    wrap.addEventListener('dblclick', (e) => { if (e.pointerType === 'touch') return; const [x, y] = rel(e); zoomAt(x, y, s > 1.01 ? 1 : 2.6); });
+    wrap.addEventListener('wheel', (e) => { if (!(e.ctrlKey || e.metaKey)) return; e.preventDefault(); const [x, y] = rel(e); zoomAt(x, y, s * Math.exp(-e.deltaY * (e.deltaMode ? 0.05 : 0.01))); }, { passive: false });
+    new ResizeObserver(fitH).observe(wrap);
+    // controls
+    const bar = host.closest('.flat') && host.closest('.flat').querySelector('.bar'); let label = null;
+    if (bar && !bar.querySelector('.zoom')) {
+      const z = el('div', 'zoom'); label = el('span', 'zl', '100%');
+      const mk = (t, aria, fn) => { const b = el('button', 'chip', t); b.type = 'button'; b.setAttribute('aria-label', aria); b.onclick = fn; return b; };
+      const mid = () => [wrap.clientWidth / 2, wrap.clientHeight / 2];
+      z.append(mk('−', 'Zoom out', () => zoomAt(...mid(), s / 1.6)), label, mk('+', 'Zoom in', () => zoomAt(...mid(), s * 1.6)), mk('Fit', 'Fit to screen', () => { s = 1; tx = ty = 0; apply(); }),
+        el('span', 'zh', 'pinch, Ctrl + scroll, or double-tap to zoom; drag to move'));
+      bar.appendChild(z);
+    }
+    requestAnimationFrame(fitH);
+  }
+  const loadDieline = async (box) => {
     const svg = parseSvg(await (await fetch(box.dataset.dieline + '?v=' + BUILD)).text());
     const vb = svg.viewBox.baseVal; svg.style.setProperty('--dfs', (vb.width * 0.0185).toFixed(2) + 'px'); svg.style.setProperty('--dsw', (vb.width * 0.0005).toFixed(3));
-    box.replaceChildren(svg);
+    if (matchMedia('(max-width: 900px)').matches) svg.style.setProperty('--dfs', (vb.width * 0.03).toFixed(2) + 'px');
+    panZoom(box, svg);
     applyUnits(box);
-  });
+  };
+  const dio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { dio.unobserve(e.target); loadDieline(e.target); } }), { rootMargin: '700px' });
+  document.querySelectorAll('[data-dieline]').forEach((box) => dio.observe(box));
   document.querySelectorAll('.flat').forEach((flat) => {
     flat.querySelectorAll('input[data-layer]').forEach((cb) => cb.addEventListener('change', () => {
       flat.querySelector('.sheet').classList.toggle('hide-' + cb.dataset.layer, !cb.checked);
@@ -110,7 +168,8 @@ const BUILD = '20261110b';
       const base = `assets/${this.key}/`;
       this.data = await (await fetch(base + 'scene.json?v=' + BUILD)).json();
       const R = (this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true }));
-      R.setPixelRatio(Math.min(2, devicePixelRatio));
+      const phone = matchMedia('(max-width: 900px)').matches; this.phone = phone;
+      R.setPixelRatio(Math.min(phone ? 1.5 : 2, devicePixelRatio));
       R.outputEncoding = THREE.sRGBEncoding;
       R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
       const lm = this.host.querySelector('.loadmsg'); if (lm) lm.remove();
@@ -121,7 +180,7 @@ const BUILD = '20261110b';
       const sun = new THREE.DirectionalLight(0xffffff, 0.55);
       const ext = Math.max(450, 0.45 * Math.max(...this.data.sheet)), k = ext / 450;
       sun.position.set(-300 * k, 700 * k, -400 * k); sun.castShadow = true;
-      sun.shadow.mapSize.set(2048, 2048);
+      sun.shadow.mapSize.set(this.phone ? 1024 : 2048, this.phone ? 1024 : 2048);
       Object.assign(sun.shadow.camera, { left: -ext, right: ext, top: ext, bottom: -ext, near: 50, far: 2200 * k });
       sun.shadow.bias = -0.0004; this.scene.add(sun);
       const gr = new THREE.Mesh(new THREE.PlaneGeometry(4000, 4000), new THREE.ShadowMaterial({ opacity: 0.16 }));
@@ -219,7 +278,9 @@ const BUILD = '20261110b';
       };
       const glb = el('button', 'chip', 'download 3D (.glb)');
       glb.onclick = () => this.exportGLB();
-      bar.append(chips, play, glb, f); this.host.appendChild(bar);
+      bar.append(chips, play, glb, f);
+      const mq = matchMedia('(max-width: 900px)'), put = () => (mq.matches ? this.host.after(bar) : this.host.appendChild(bar));
+      put(); mq.addEventListener('change', put);
     }
     exportGLB() { // the model exactly as posed now, in metres, without the ink outline lines
       if (!THREE.GLTFExporter) return;
@@ -250,11 +311,19 @@ const BUILD = '20261110b';
     }
     bind() {
       const cv = this.renderer.domElement; let drag = false, lx = 0, ly = 0;
-      cv.addEventListener('pointerdown', (e) => { drag = true; lx = e.clientX; ly = e.clientY; cv.setPointerCapture(e.pointerId); });
-      cv.addEventListener('pointerup', () => (drag = false));
+      const ptr = new Map(); let pd = 0;
+      cv.addEventListener('pointerdown', (e) => { ptr.set(e.pointerId, [e.clientX, e.clientY]); drag = ptr.size === 1; lx = e.clientX; ly = e.clientY; cv.setPointerCapture(e.pointerId); if (ptr.size === 2) { const [a, b] = [...ptr.values()]; pd = Math.hypot(a[0] - b[0], a[1] - b[1]); } });
+      cv.addEventListener('pointermove', (e) => {
+        if (!ptr.has(e.pointerId)) return; ptr.set(e.pointerId, [e.clientX, e.clientY]);
+        if (ptr.size === 2) { const [a, b] = [...ptr.values()], d = Math.hypot(a[0] - b[0], a[1] - b[1]); if (pd) { this.dist = Math.max(this.radius * 1.4, Math.min(this.radius * 9, this.dist * (pd / d))); this.place(); } pd = d; }
+      });
+      const gone = (e) => { ptr.delete(e.pointerId); pd = 0; drag = false; };
+      cv.addEventListener('pointerup', gone); cv.addEventListener('pointercancel', gone);
+      
       cv.addEventListener('pointermove', (e) => {
         if (!drag) return;
-        this.az -= (e.clientX - lx) * 0.008; this.el = Math.max(-1.45, Math.min(1.45, this.el + (e.clientY - ly) * 0.006));
+        this.az -= (e.clientX - lx) * 0.008;
+        if (e.pointerType !== 'touch') this.el = Math.max(-1.45, Math.min(1.45, this.el + (e.clientY - ly) * 0.006));
         lx = e.clientX; ly = e.clientY;
         this.sec.querySelectorAll('.chip[data-v]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
         this.place();
